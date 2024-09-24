@@ -28,7 +28,6 @@ import Landing from "views/examples/Landing.js";
 import Login from "views/examples/Login.js";
 import Profile from "views/examples/Profile.js";
 import Register from "views/examples/Register.js";
-import LoginHandler from "./views/examples/LoginHandler";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -40,7 +39,6 @@ root.render(
       <Route path="/login-page" exact element={<Login />} />
       <Route path="/profile-page" exact element={<Profile />} />
       <Route path="/register-page" exact element={<Register />} />
-        <Route path="/api/v1/login/oauth2/callback/kakao" element={<LoginHandler/>}/>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   </BrowserRouter>

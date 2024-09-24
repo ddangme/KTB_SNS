@@ -191,19 +191,50 @@ class DemoNavbar extends React.Component {
                       </DropdownItem>
                     </DropdownMenu>
                   </UncontrolledDropdown>
-                </Nav>
-                <Nav className="align-items-lg-center ml-lg-auto" navbar>
-                  <NavItem className="d-none d-lg-block ml-lg-4">
-                    <Button
-                        className="btn-neutral btn-icon"
-                        color="default"
-                        to="/login-page"
-                        tag={Link}
-                    >
-                      <span className="nav-link-inner--text ml-1">
+                  <UncontrolledDropdown nav>
+                    <DropdownToggle nav>
+                      <i className="ni ni-collection d-lg-none mr-1" />
+                      <span className="nav-link-inner--text">Examples</span>
+                    </DropdownToggle>
+                    <DropdownMenu>
+                      <DropdownItem to="/landing-page" tag={Link}>
+                        Landing
+                      </DropdownItem>
+                      <DropdownItem to="/profile-page" tag={Link}>
+                        Profile
+                      </DropdownItem>
+                      <DropdownItem to="/login-page" tag={Link}>
                         Login
-                      </span>
-                    </Button>
+                      </DropdownItem>
+                      <DropdownItem to="/register-page" tag={Link}>
+                        Register
+                      </DropdownItem>
+                    </DropdownMenu>
+                  </UncontrolledDropdown>
+                </Nav>
+                {/*<Nav className="align-items-lg-center ml-lg-auto" navbar>*/}
+                {/*  <NavItem>*/}
+                {/*    <NavLink*/}
+                {/*        className="nav-link-icon"*/}
+                {/*        href="https://github.com/creativetimofficial/argon-design-system-react"*/}
+                {/*        id="tooltip112445449"*/}
+                {/*        target="_blank"*/}
+                {/*    >*/}
+                {/*      <i className="ni ni-single-02 p--1" />*/}
+                {/*      Login*/}
+                {/*    </NavLink>*/}
+                {/*  </NavItem>*/}
+                {/*</Nav>*/}
+                <Nav className="align-items-lg-center ml-lg-auto" navbar>
+                  <NavItem>
+                    <Link
+                        to="/login-page"
+                        className="nav-link nav-link-icon"
+                        id="tooltip112445449"
+                    >
+                      <i className="ni ni-single-02 p--1" />
+                      Login
+                    </Link>
                   </NavItem>
                 </Nav>
               </UncontrolledCollapse>

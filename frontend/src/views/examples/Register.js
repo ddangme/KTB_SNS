@@ -15,9 +15,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-
-import React, { useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import React from "react";
 
 // reactstrap components
 import {
@@ -40,25 +38,17 @@ import {
 import DemoNavbar from "components/Navbars/DemoNavbar.js";
 import SimpleFooter from "components/Footers/SimpleFooter.js";
 
-const Register = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
+class Register extends React.Component {
+  componentDidMount() {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
-  }, []);
-
-  const handleKakaoLogin = () => {
-    const CLIENT_ID = process.env.REACT_APP_KAKAO_REST_API_KEY;
-    const REDIRECT_URI = process.env.REACT_APP_KAKAO_LOGIN_REDIRECT_URL;
-
-    window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-  };
-
-  return (
+    this.refs.main.scrollTop = 0;
+  }
+  render() {
+    return (
       <>
         <DemoNavbar />
-        <main>
+        <main ref="main">
           <section className="section section-shaped section-lg">
             <div className="shape shape-style-1 bg-gradient-default">
               <span />
@@ -78,17 +68,56 @@ const Register = () => {
                       <div className="text-muted text-center mb-3">
                         <small>Sign up with</small>
                       </div>
+                      <div className="text-center">
+                        <Button
+                          className="btn-neutral btn-icon mr-4"
+                          color="default"
+                          href="#pablo"
+                          onClick={(e) => e.preventDefault()}
+                        >
+                          <span className="btn-inner--icon mr-1">
+                            <img
+                              alt="..."
+                              src={
+                                require("assets/img/icons/common/github.svg")
+                                  .default
+                              }
+                            />
+                          </span>
+                          <span className="btn-inner--text">Github</span>
+                        </Button>
+                        <Button
+                          className="btn-neutral btn-icon ml-1"
+                          color="default"
+                          href="#pablo"
+                          onClick={(e) => e.preventDefault()}
+                        >
+                          <span className="btn-inner--icon mr-1">
+                            <img
+                              alt="..."
+                              src={
+                                require("assets/img/icons/common/google.svg")
+                                  .default
+                              }
+                            />
+                          </span>
+                          <span className="btn-inner--text">Google</span>
+                        </Button>
+                      </div>
                     </CardHeader>
                     <CardBody className="px-lg-5 py-lg-5">
+                      <div className="text-center text-muted mb-4">
+                        <small>Or sign up with credentials</small>
+                      </div>
                       <Form role="form">
                         <FormGroup>
                           <InputGroup className="input-group-alternative mb-3">
                             <InputGroupAddon addonType="prepend">
                               <InputGroupText>
-                                <i className="ni ni-hat-3"/>
+                                <i className="ni ni-hat-3" />
                               </InputGroupText>
                             </InputGroupAddon>
-                            <Input placeholder="Name" type="text"/>
+                            <Input placeholder="Name" type="text" />
                           </InputGroup>
                         </FormGroup>
                         <FormGroup>
@@ -109,31 +138,50 @@ const Register = () => {
                               </InputGroupText>
                             </InputGroupAddon>
                             <Input
-                                placeholder="Password"
-                                type="password"
-                                autoComplete="off"
+                              placeholder="Password"
+                              type="password"
+                              autoComplete="off"
                             />
                           </InputGroup>
                         </FormGroup>
-                        <FormGroup>
-                          <InputGroup className="input-group-alternative">
-                            <InputGroupAddon addonType="prepend">
-                              <InputGroupText>
-                                <i className="ni ni-lock-circle-open" />
-                              </InputGroupText>
-                            </InputGroupAddon>
-                            <Input
-                                placeholder="Password Check"
-                                type="password"
-                                autoComplete="off"
-                            />
-                          </InputGroup>
-                        </FormGroup>
+                        <div className="text-muted font-italic">
+                          <small>
+                            password strength:{" "}
+                            <span className="text-success font-weight-700">
+                              strong
+                            </span>
+                          </small>
+                        </div>
+                        <Row className="my-4">
+                          <Col xs="12">
+                            <div className="custom-control custom-control-alternative custom-checkbox">
+                              <input
+                                className="custom-control-input"
+                                id="customCheckRegister"
+                                type="checkbox"
+                              />
+                              <label
+                                className="custom-control-label"
+                                htmlFor="customCheckRegister"
+                              >
+                                <span>
+                                  I agree with the{" "}
+                                  <a
+                                    href="#pablo"
+                                    onClick={(e) => e.preventDefault()}
+                                  >
+                                    Privacy Policy
+                                  </a>
+                                </span>
+                              </label>
+                            </div>
+                          </Col>
+                        </Row>
                         <div className="text-center">
                           <Button
-                              className="mt-4"
-                              color="primary"
-                              type="button"
+                            className="mt-4"
+                            color="primary"
+                            type="button"
                           >
                             Create account
                           </Button>
@@ -148,7 +196,8 @@ const Register = () => {
         </main>
         <SimpleFooter />
       </>
-  );
-};
+    );
+  }
+}
 
 export default Register;

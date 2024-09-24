@@ -15,9 +15,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-
 import React from "react";
-import {Link, useNavigate} from 'react-router-dom';
 
 // reactstrap components
 import {
@@ -40,25 +38,20 @@ import {
 import DemoNavbar from "components/Navbars/DemoNavbar.js";
 import SimpleFooter from "components/Footers/SimpleFooter.js";
 
-const Login = () => {
-  const navigate = useNavigate();
+// img components
+import kakaoIcon from "assets/img/icons/common/kakao.png";
 
-  React.useEffect(() => {
+class Login extends React.Component {
+  componentDidMount() {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
-  }, []);
-
-  const handleKakaoLogin = () => {
-    const CLIENT_ID = process.env.REACT_APP_KAKAO_REST_API_KEY;
-    const REDIRECT_URI = process.env.REACT_APP_KAKAO_LOGIN_REDIRECT_URL;
-
-    window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-  };
-
-  return (
+    this.refs.main.scrollTop = 0;
+  }
+  render() {
+    return (
       <>
         <DemoNavbar />
-        <main>
+        <main ref="main">
           <section className="section section-shaped section-lg">
             <div className="shape shape-style-1 bg-gradient-default">
               <span />
@@ -74,28 +67,7 @@ const Login = () => {
               <Row className="justify-content-center">
                 <Col lg="5">
                   <Card className="bg-secondary shadow border-0">
-                    <CardHeader className="bg-white pb-5">
-                      <div className="text-muted text-center mb-3">
-                        <small>Sign in with</small>
-                      </div>
-                      <div className="btn-wrapper text-center">
-                        <Button
-                            className="btn-neutral btn-icon ml-1"
-                            color="default"
-                            onClick={handleKakaoLogin}
-                            style={{ color: 'black', backgroundColor: 'rgb(254, 229, 2)', borderColor: 'rgb(254, 229, 2)'}}
-                        >
-                        <span className="btn-inner--icon mr-1">
-                          <img src={process.env.PUBLIC_URL + '/kakao-logo.png'} alt="Kakao Logo"/>
-                        </span>
-                          <span className="btn-inner--text">Kakao Login</span>
-                        </Button>
-                      </div>
-                    </CardHeader>
                     <CardBody className="px-lg-5 py-lg-5">
-                      <div className="text-center text-muted mb-4">
-                        <small>Or sign in with credentials</small>
-                      </div>
                       <Form role="form">
                         <FormGroup className="mb-3">
                           <InputGroup className="input-group-alternative">
@@ -115,32 +87,45 @@ const Login = () => {
                               </InputGroupText>
                             </InputGroupAddon>
                             <Input
-                                placeholder="Password"
-                                type="password"
-                                autoComplete="off"
+                              placeholder="Password"
+                              type="password"
+                              autoComplete="off"
                             />
                           </InputGroup>
                         </FormGroup>
                         <div className="custom-control custom-control-alternative custom-checkbox">
                           <input
-                              className="custom-control-input"
-                              id=" customCheckLogin"
-                              type="checkbox"
+                            className="custom-control-input"
+                            id=" customCheckLogin"
+                            type="checkbox"
                           />
                           <label
-                              className="custom-control-label"
-                              htmlFor=" customCheckLogin"
+                            className="custom-control-label"
+                            htmlFor=" customCheckLogin"
                           >
                             <span>Remember me</span>
                           </label>
                         </div>
                         <div className="text-center">
                           <Button
-                              className="my-4"
-                              color="primary"
-                              type="button"
+                            className="my-4"
+                            color="primary"
+                            type="button"
                           >
-                            Sign in
+                            로그인
+                          </Button>
+                          <Button
+                              style={{ backgroundColor: 'rgb(254, 229, 2)', color: "black", borderColor: 'rgb(254, 229, 2)' }}
+                              className="btn-neutral btn-icon"
+                              href="/login-page"
+                          >
+                          <span className="btn-inner--icon mr-1">
+                            <img
+                                alt="카카오 로그인"
+                                src={kakaoIcon}
+                            />
+                          </span>
+                            <span className="btn-inner--text">카카오 로그인</span>
                           </Button>
                         </div>
                       </Form>
@@ -149,20 +134,21 @@ const Login = () => {
                   <Row className="mt-3">
                     <Col xs="6">
                       <a
-                          className="text-light"
-                          href="#pablo"
-                          onClick={(e) => e.preventDefault()}
+                        className="text-light"
+                        href="#pablo"
+                        onClick={(e) => e.preventDefault()}
                       >
-                        <small>Forgot password?</small>
+                        <small>비밀번호 찾기</small>
                       </a>
                     </Col>
                     <Col className="text-right" xs="6">
-                      <Link
-                          to="/register-page"
-                          className="text-light"
+                      <a
+                        className="text-light"
+                        href="#pablo"
+                        onClick={(e) => e.preventDefault()}
                       >
-                        <small>Create new account</small>
-                      </Link>
+                        <small>회원가입</small>
+                      </a>
                     </Col>
                   </Row>
                 </Col>
@@ -172,7 +158,8 @@ const Login = () => {
         </main>
         <SimpleFooter />
       </>
-  );
-};
+    );
+  }
+}
 
 export default Login;
