@@ -7,6 +7,7 @@
     "type": "git",
     "url": "git+https://github.com/creativetimofficial/argon-design-system-react.git"
   },
+  "proxy": "http://localhost:8080",
   "keywords": [
     "react",
     "reactjs",
@@ -47,9 +48,14 @@
     "not op_mini all"
   ],
   "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
     "ajv": "^8.16.0",
+    "axios": "^1.7.7",
     "bootstrap": "4.6.2",
     "classnames": "2.3.2",
+    "framer-motion": "^11.5.6",
     "headroom.js": "0.12.0",
     "moment": "2.29.4",
     "nouislider": "15.4.0",
@@ -68,10 +74,10 @@
   "devDependencies": {
     "@types/markerclustererplus": "2.1.33",
     "@types/react": "18.2.6",
+    "cross-env": "^7.0.3",
     "eslint-plugin-flowtype": "8.0.3",
     "jquery": "3.7.0",
-    "typescript": "5.0.4",
-    "cross-env": "^7.0.3"
+    "typescript": "5.0.4"
   },
   "overrides": {
     "svgo": "3.0.2"
